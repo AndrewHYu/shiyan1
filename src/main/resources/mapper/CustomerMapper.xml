@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wy.dao.CustomerDao">
+    <select id="selectForLogin" parameterType="com.wy.po.Customer" resultType="com.wy.po.Customer">
+        SELECT * FROM tb_customer WHERE name=#{name} AND password=#{password}
+    </select>
+    <insert id="insertCustomer" parameterType="com.wy.po.Customer">
+        INSERT INTO tb_customer(name,pow,password,email,sex,phone,question,result,issue_date)
+        VALUES (#{name},#{pow},#{password},#{email},#{sex},#{phone},#{question},#{result},#{issueDate})
+    </insert>
+    <select id="selectForReset" parameterType="com.wy.po.Customer" resultType="com.wy.po.Customer">
+        SELECT * FROM tb_customer WHERE name=#{name} AND email=#{email} AND result=#{result}
+    </select>
+    <update id="updatePasswordById" parameterType="com.wy.po.Customer">
+        UPDATE tb_customer SET password=#{password} WHERE id=#{id}
+    </update>
+
+</mapper>

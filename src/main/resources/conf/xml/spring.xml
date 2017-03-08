@@ -16,7 +16,7 @@
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
     <!-- 设置使用注解的类所在的jar包 -->
-    <context:component-scan base-package="com.wy.*"/>
+    <context:component-scan base-package="com.wy.service"/>
 
 
     <bean id="dataSource"  class= "org.apache.commons.dbcp.BasicDataSource ">
@@ -29,7 +29,7 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
-        <!--<property name="configLocation" value="classpath:conf/mybatis-config.xml" />-->
+        <property name="configLocation" value="classpath:conf/xml/mybatis-config.xml" />
         <!-- 上面一个属性可以是configLocation -->
     </bean>
     <!--&lt;!&ndash;mybatis &ndash;&gt;-->
@@ -37,5 +37,6 @@
         <property name="basePackage" value="com.wy.dao" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
+
 
 </beans>
